@@ -28,6 +28,7 @@
         public: true
       vars:
         k3s_state: installed
+        k3s_etcd_datastore: true
 
     - name: Get absolute path to this Git repository
       delegate_to: localhost
