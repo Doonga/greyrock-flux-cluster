@@ -25,15 +25,16 @@ spec:
       createDefaultDiskLabeledNodes: true
       storageMinimalAvailablePercentage: "10"
       defaultLonghornStaticStorageClass: "longhorn"
-      # backupTarget: s3://k8s-bak@us-east-1/cluster1/
-      # backupTargetCredentialSecret: minio-secret
+      backupTarget: s3://longhorn-backup@us-east-1/
+      backupTargetCredentialSecret: minio-secret
+    #   taintToleration: arm=true:NoExecute
 
     ingress:
       enabled: true
       ingressClassName: "nginx"
       tls: true
       host: "longhorn.${SECRET_DOMAIN}"
-      tlsSecret: "longhorn--tls"
+      tlsSecret: "longhorn-tls"
       annotations:
         cert-manager.io/cluster-issuer: "letsencrypt-production"
         hajimari.io/enable: "true"
