@@ -30,7 +30,7 @@ spec:
           hajimari.io/enable: "true"
           hajimari.io/icon: "cow"
           external-dns.alpha.kubernetes.io/target: "ipv4.${SECRET_DOMAIN}"
-          external-dns/is-public: "false"
+          external-dns/is-public: "true"
         hosts:
           - host: "{{ .Release.Name }}.${SECRET_DOMAIN}"
             paths:
