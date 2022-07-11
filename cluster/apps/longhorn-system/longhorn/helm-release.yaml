@@ -1,0 +1,42 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: longhorn
+  namespace: longhorn-system
+spec:
+  interval: 15m
+  chart:
+    spec:
+      # renovate: registryUrl=https://charts.longhorn.io
+      chart: longhorn
+      version: 1.3.0
+      sourceRef:
+        kind: HelmRepository
+        name: longhorn
+        namespace: flux-system
+      interval: 15m
+  values:
+    persistence:
+      defaultClassReplicaCount: 2
+    defaultSettings:
+      defaultReplicaCount: 2
+    ingress:
+      main:
+        enabled: true
+        ingressClassName: "nginx"
+        annotations:
+          cert-manager.io/cluster-issuer: "letsencrypt-staging"
+          hajimari.io/enable: "true"
+          hajimari.io/icon: "cow"
+          external-dns.alpha.kubernetes.io/target: "ipv4.${SECRET_DOMAIN}"
+          external-dns/is-public: "false"
+        hosts:
+          - host: "{{ .Release.Name }}.${SECRET_DOMAIN}"
+            paths:
+              - path: /
+                pathType: Prefix
+        tls:
+          - hosts:
+              - "{{ .Release.Name }}.${SECRET_DOMAIN}"
+            secretName: "longhorn-tls"
