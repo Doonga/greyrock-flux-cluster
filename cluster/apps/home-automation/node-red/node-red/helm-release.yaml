@@ -53,6 +53,8 @@ spec:
           - hosts:
               - "node-red.${SECRET_DOMAIN}"
             secretName: "node-red-tls"
+    env:
+      TZ: America/New_York
     persistence:
       config:
         enabled: true
