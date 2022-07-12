@@ -77,7 +77,7 @@ spec:
       limits:
         memory: 512Mi
   valuesFrom:
-    - targetPath: emqxConfig.EMQX_DEFAULT__PASSWORD
+    - targetPath: emqxConfig.default_password
       kind: Secret
       name: emqx-config
       valuesKey: admin_password
