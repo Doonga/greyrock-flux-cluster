@@ -7,5 +7,5 @@ resources:
   - kube-system
   - networking
   - longhorn-system
-  - home-automation
+  #- home-automation
   # - system-upgrade
