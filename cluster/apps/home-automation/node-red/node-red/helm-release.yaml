@@ -24,8 +24,8 @@ spec:
       retries: 5
   values:
     image:
-      repository: nodered/node-red
-      tag: v2.1.2-12
+      repository: https://github.com/node-red/node-red-docker
+      tag: v2.2.2
     node-red:
     ingress:
       main:
