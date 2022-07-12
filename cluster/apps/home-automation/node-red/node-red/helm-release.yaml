@@ -31,6 +31,7 @@ spec:
     podSecurityContext:
       runAsUser: 1000
       runAsGroup: 1000
+      fsGroup: 1000
     ingress:
       main:
         enabled: true
@@ -55,12 +56,6 @@ spec:
     persistence:
       config:
         enabled: true
-        accessMode: ReadWriteMany
+        accessMode: ReadWriteOnce
         mountPath: /data
         size: 5Gi
-    resources:
-      requests:
-        cpu: 100m
-        memory: 128Mi
-      limits:
-        memory: 256Mi
