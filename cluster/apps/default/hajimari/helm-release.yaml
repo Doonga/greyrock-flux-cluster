@@ -32,6 +32,7 @@ spec:
         matchNames:
           - default
           - networking
+          - longhorn-system
       name: "you"
       customApps:
         - name: Some External Cluster Service
