@@ -33,6 +33,7 @@ spec:
           - default
           - networking
           - longhorn-system
+          - home
       name: "you"
       customApps:
         - name: Some External Cluster Service
