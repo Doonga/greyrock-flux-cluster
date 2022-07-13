@@ -34,8 +34,8 @@ spec:
       #EMQX_AUTHORIZATION__SOURCES__1__TYPE: built_in_database
     service:
       type: LoadBalancer
-      externalIPs:
-        - "${SVC_EMQX_ADDR}"
+      #externalIPs:
+      #  - "${SVC_EMQX_ADDR}"
       externalTrafficPolicy: Local
       annotations:
         coredns.io/hostname: "mqtt.${SECRET_DOMAIN}"
