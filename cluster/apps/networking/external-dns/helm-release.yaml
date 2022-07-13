@@ -43,7 +43,6 @@ spec:
     policy: sync
     sources:
       - ingress
-      - service
     txtPrefix: "k8s."
     txtOwnerId: "default"
     domainFilters:

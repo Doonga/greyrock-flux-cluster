@@ -44,8 +44,8 @@ spec:
       type: LoadBalancer
       port: 1833
       annotations:
-        metallb.universe.tf/loadBalancerIPs: &extip "${METALLB_SVC_EMQX_ADDR}"
-        external-dns.alpha.kubernetes.io/hostname: "mqtt.${SECRET_DOMAIN}"
+        metallb.universe.tf/loadBalancerIPs: "${METALLB_SVC_EMQX_ADDR}"
+        coredns.io/hostname: "mqtt.${SECRET_DOMAIN}"
       externalTrafficPolicy: Local
     ingress:
       dashboard:
