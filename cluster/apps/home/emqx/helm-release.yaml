@@ -32,21 +32,13 @@ spec:
       #EMQX_AUTHENTICATION__1__BACKEND: built_in_database
       #EMQX_AUTHENTICATION__1__MECHANISM: password_based
       #EMQX_AUTHORIZATION__SOURCES__1__TYPE: built_in_database
-    #service:
-    #  type: LoadBalancer
-    #  externalIPs:
-    #    - "${SVC_EMQX_ADDR}"
-    #  externalTrafficPolicy: Local
-    #  annotations:
-    #    external-dns.alpha.kubernetes.io/target: "${SVC_EMQX_ADDR}"
-    #    external-dns.alpha.kubernetes.io/hostname: "mqtt.${SECRET_DOMAIN}"
     service:
       type: LoadBalancer
-      port: 1833
-      annotations:
-        metallb.universe.tf/loadBalancerIPs: "${METALLB_SVC_EMQX_ADDR}"
-        coredns.io/hostname: "mqtt.${SECRET_DOMAIN}"
+      externalIPs:
+        - "${SVC_EMQX_ADDR}"
       externalTrafficPolicy: Local
+      annotations:
+        coredns.io/hostname: "mqtt.${SECRET_DOMAIN}"
     ingress:
       dashboard:
         enabled: true
