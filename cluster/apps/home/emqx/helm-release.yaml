@@ -31,7 +31,7 @@ spec:
       EMQX_ALLOW_ANONYMOUS: "false"
       EMQX_AUTHENTICATION__1__BACKEND: built_in_database
       EMQX_AUTHENTICATION__1__MECHANISM: password_based
-      EMQX_AUTHORIZATION__SOURCES__1__TYPE: built_in_database
+      #EMQX_AUTHORIZATION__SOURCES__1__TYPE: built_in_database
     service:
       type: LoadBalancer
       externalIPs:
