@@ -45,7 +45,6 @@ spec:
       port: 1833
       annotations:
         metallb.universe.tf/loadBalancerIPs: &extip "${METALLB_SVC_EMQX_ADDR}"
-        external-dns.alpha.kubernetes.io/target: *extip
         external-dns.alpha.kubernetes.io/hostname: "mqtt.${SECRET_DOMAIN}"
       externalTrafficPolicy: Local
     ingress:
