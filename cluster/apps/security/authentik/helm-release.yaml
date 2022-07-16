@@ -34,14 +34,9 @@ spec:
     authentik:
       secret_key: "${SECRET_AUTHENTIK_SECRET_KEY}"
       error_reporting:
-        enabled: false
+        enabled: true
       postgresql:
-        host: "authentik-postgresql"
-        name: "authentik"
-        user: "authentik"
         password: "${SECRET_AUTHENTIK_POSTGRES_PASSWORD}"
-      redis:
-        host: "authentik-redis-master"
       email:
         host: "smtp.sendgrid.net"
         port: 587
