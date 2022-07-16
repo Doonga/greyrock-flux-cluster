@@ -34,6 +34,7 @@ spec:
           - networking
           - longhorn-system
           - home
+          - security
       name: "you"
       customApps:
         - name: Some External Cluster Service
