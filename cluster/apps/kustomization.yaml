@@ -9,4 +9,5 @@ resources:
   - longhorn-system
   - home
   - security
+  - system-monitoring
   # - system-upgrade
