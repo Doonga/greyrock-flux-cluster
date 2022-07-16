@@ -51,6 +51,14 @@ spec:
     #  rules:
     #    create: true
 
+    service:
+      type: LoadBalancer
+      #externalIPs:
+      #  - "${SVC_EMQX_ADDR}"
+      externalTrafficPolicy: Local
+      annotations:
+        coredns.io/hostname: "ldap.${SECRET_DOMAIN}"
+
     ingress:
       enabled: true
       ingressClassName: "nginx"
