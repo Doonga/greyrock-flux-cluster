@@ -28,6 +28,10 @@ spec:
           paths:
             - path: "/"
               pathType: Prefix
+      annotations:
+        cert-manager.io/cluster-issuer: "letsencrypt-production"
+        external-dns.alpha.kubernetes.io/target: "ipv4.${SECRET_DOMAIN}"
+        external-dns/is-public: "true"
     postgresql:
       enabled: true
       postgresqlPassword: ${AUTHENTIK_POSTGRES_PASSWORD}
