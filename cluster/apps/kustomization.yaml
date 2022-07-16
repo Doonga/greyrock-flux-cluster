@@ -8,4 +8,5 @@ resources:
   - networking
   - longhorn-system
   - home
+  - authentik
   # - system-upgrade
