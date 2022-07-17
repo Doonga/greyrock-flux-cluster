@@ -41,18 +41,24 @@ spec:
           operator: "Equal"
           value: "true"
           effect: "NoExecute"
+      nodeSelector:
+        label-key1: "storageonly=true"
     longhornDriver:
       tolerations:
         - key: "storageonly"
           operator: "Equal"
           value: "true"
           effect: "NoExecute"
+      nodeSelector:
+        label-key1: "storageonly=true"
     longhornUI:
       tolerations:
         - key: "storageonly"
           operator: "Equal"
           value: "true"
           effect: "NoExecute"
+      nodeSelector:
+        label-key1: "storageonly=true"
     ingress:
       enabled: true
       ingressClassName: "nginx"
