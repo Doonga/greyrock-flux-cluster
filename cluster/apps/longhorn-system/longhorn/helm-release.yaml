@@ -35,7 +35,24 @@ spec:
       backupTarget: s3://longhorn-backup@us-east-1/
       backupTargetCredentialSecret: minio-secret
     #   taintToleration: arm=true:NoExecute
-
+    longhornManager:
+      tolerations:
+        - key: "storageonly"
+          operator: "Equal"
+          value: "true"
+          effect: "NoExecute"
+    longhornDriver:
+      tolerations:
+        - key: "storageonly"
+          operator: "Equal"
+          value: "true"
+          effect: "NoExecute"
+    longhornUI:
+      tolerations:
+        - key: "storageonly"
+          operator: "Equal"
+          value: "true"
+          effect: "NoExecute"
     ingress:
       enabled: true
       ingressClassName: "nginx"
