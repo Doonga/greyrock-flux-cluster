@@ -100,7 +100,7 @@ spec:
     kubeApiServer:
       enabled: true
     kubeControllerManager:
-      enabled: true
+      enabled: false
       service:
         enabled: true
       serviceMonitor:
@@ -108,7 +108,7 @@ spec:
         https: true
         insecureSkipVerify: true
     kubeScheduler:
-      enabled: true
+      enabled: false
       service:
         enabled: true
       serviceMonitor:
@@ -116,7 +116,7 @@ spec:
         https: true
         insecureSkipVerify: true
     kubeProxy:
-      enabled: true
+      enabled: false
     kubeEtcd:
       enabled: true
       service:
