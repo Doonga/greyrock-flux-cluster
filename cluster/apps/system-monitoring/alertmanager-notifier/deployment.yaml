@@ -3,7 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: alertmanager-notifier
-  namespace: monitoring-system
+  namespace: system-monitoring
   labels:
     app.kubernetes.io/name: alertmanager-notifier
 spec:
