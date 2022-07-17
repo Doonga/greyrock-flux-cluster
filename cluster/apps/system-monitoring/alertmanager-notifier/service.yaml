@@ -2,15 +2,16 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: &name alertmanager-notifier
+  name: alertmanager-notifier-svc
   namespace: system-monitoring
-  labels: &labels
-    app.kubernetes.io/name: *name
+  labels:
+    app.kubernetes.io/name: alertmanager-notifier
 spec:
-  selector: *labels
+  selector:
+    app.kubernetes.io/name: alertmanager-notifier
   ports:
-    - name: &port http
+    - name: web-port
       protocol: TCP
       port: 8899
-      targetPort: *port
+      targetPort: web-port
   type: ClusterIP
