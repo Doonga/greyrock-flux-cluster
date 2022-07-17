@@ -3,7 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: &name alertmanager-discord
-  namespace: monitoring-system
+  namespace: system-monitoring
   labels: &labels
     app.kubernetes.io/name: *name
 spec:
