@@ -4,5 +4,5 @@ kind: Kustomization
 resources:
   - kube-prometheus-stack
   - grafana
-  - alertmanager-notifier
+  - alertmanager-discord
   - namespace.yaml

@@ -2,8 +2,8 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: &name alertmanager-notifier
-  namespace: system-monitoring
+  name: &name alertmanager-discord
+  namespace: monitoring-system
   labels: &labels
     app.kubernetes.io/name: *name
 spec:
@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: *name
-          image: registry.gitlab.com/ix.ai/alertmanager-notifier:v0.4.2
+          image: benjojo/alertmanager-discord
           imagePullPolicy: IfNotPresent
           resources:
             requests:
@@ -27,7 +27,7 @@ spec:
           ports:
             - name: &port http
               protocol: TCP
-              containerPort: 8899
+              containerPort: 9094
           livenessProbe:
             tcpSocket:
               port: *port
@@ -36,4 +36,4 @@ spec:
               port: *port
           envFrom:
             - secretRef:
-                name: alertmanager-notifier-secrets
+                name: alertmanager-discord-secrets
