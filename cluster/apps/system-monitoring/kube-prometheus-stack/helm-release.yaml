@@ -31,7 +31,7 @@ spec:
           - name: 'null'
           - name: default
             webhook_configs:
-              - url: "http://alertmanager-notifier.system-monitoring.svc.cluster.local:8899/alert"
+              - url: "http://alertmanager-notifier.system-monitoring.svc.cluster.local:9094/alert"
         route:
           group_by: ['alertname', 'job']
           group_wait: 30s
