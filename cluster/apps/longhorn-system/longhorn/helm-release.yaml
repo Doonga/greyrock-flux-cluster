@@ -34,22 +34,34 @@ spec:
       defaultLonghornStaticStorageClass: "longhorn"
       backupTarget: s3://longhorn-backup@us-east-1/
       backupTargetCredentialSecret: minio-secret
-    #   taintToleration: arm=true:NoExecute
+      taintToleration: StoreageOnly=true:NoExecute;CriticalAddonsOnly=true:NoExecute
     longhornManager:
       tolerations:
-        - key: "storageonly"
+        - key: "StorageOnly"
+          operator: "Equal"
+          value: "true"
+          effect: "NoExecute"
+        - key: "CriticalAddonsOnly"
           operator: "Equal"
           value: "true"
           effect: "NoExecute"
     longhornDriver:
       tolerations:
-        - key: "storageonly"
+        - key: "StorageOnly"
+          operator: "Equal"
+          value: "true"
+          effect: "NoExecute"
+        - key: "CriticalAddonsOnly"
           operator: "Equal"
           value: "true"
           effect: "NoExecute"
     longhornUI:
       tolerations:
-        - key: "storageonly"
+        - key: "StorageOnly"
+          operator: "Equal"
+          value: "true"
+          effect: "NoExecute"
+        - key: "CriticalAddonsOnly"
           operator: "Equal"
           value: "true"
           effect: "NoExecute"
