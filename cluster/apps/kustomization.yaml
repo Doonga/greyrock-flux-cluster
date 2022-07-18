@@ -10,4 +10,4 @@ resources:
   - home
   - security
   - system-monitoring
-  # - system-upgrade
+  - system-upgrade
