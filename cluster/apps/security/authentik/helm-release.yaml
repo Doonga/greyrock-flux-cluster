@@ -78,6 +78,9 @@ spec:
     redis:
       enabled: true
 
+    worker:
+      replicas: 3
+
   valuesFrom:
     - kind: Secret
       name: authentik
