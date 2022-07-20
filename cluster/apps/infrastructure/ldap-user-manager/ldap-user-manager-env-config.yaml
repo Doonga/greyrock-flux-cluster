@@ -1,0 +1,17 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+    name: ldap-user-manager.env.config
+    namespace: ldap-user-manager
+    labels:
+        app: ldap-user-manager
+data:
+    SERVER_HOSTNAME: ldap-user-manager.${SECRET_DOMAIN}
+    LDAP_URI: ldap://ldap.${SECRET_DOMAIN}
+    LDAP_BASE_DN: DC=greyrock,DC=io
+    LDAP_REQUIRE_STARTTLS: "true"
+    LDAP_ADMINS_GROUP: admins
+    LDAP_ADMIN_BIND_DN: cn=admin,dc=greyrock,dc=io
+    LDAP_ADMIN_BIND_PWD: ${SECRET_OPENLDAP_ADMIN_PASSWORD}
+    LDAP_IGNORE_CERT_ERRORS: "true"
+    EMAIL_DOMAIN: ${SECRET_DOMAIN}
