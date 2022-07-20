@@ -13,7 +13,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: &host "ldap-user-manager.${SECRET_PUBLIC_DOMAIN}"
+    - host: &host "ldap-user-manager.${SECRET_DOMAIN}"
       http:
         paths:
           - path: /
