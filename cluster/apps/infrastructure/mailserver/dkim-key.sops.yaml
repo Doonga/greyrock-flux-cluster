@@ -1,0 +1,30 @@
+kind: Secret
+apiVersion: v1
+metadata:
+    name: mailserver.opendkim.keys
+    namespace: mailserver
+    labels:
+        app: mailserver
+type: Opaque
+stringData:
+    greyrock.io.key: ENC[AES256_GCM,data:BQ8mw9wzvcjvYj7Axg==,iv:8l1OcTNoXAKztbZCPZ/yfWcN85F/X1SjcbLI7NZ+GzI=,tag:7eyu24Sjj9ceGJiKs8lryA==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age12e0fdd0qrge7ccnhgzdk2yp3w5kxg45cspcy4sms0n3ywd2055wsjy06kj
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBOSnQ1YkJFSzJ1b3RYRDVY
+            cHcxUFFZT1dCQXFmanpGVjNPSUYwTy9wZ0I0CkZ4ZllubUlVY0Vud1JnNE55RndP
+            V0pJaTl2ZHg2T0pyUVR5Z2hCd1N5d0UKLS0tIEpNSzVxQzZrcEdwYisxZ2dXM1Fi
+            ak01OXNOaTRtOEdUM3FadndFZnFsY3cKJq5N90Hq0x4lHHqqGEPCJjyC/R/BQ8yg
+            BhlRaBjPDazPm3dw60R/LRujX8sGbB/19pFDc6TuonzXRR7FO24d4A==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2022-07-20T13:54:08Z"
+    mac: ENC[AES256_GCM,data:7dgbjD0HTU2tazIvuwdkXXa6rTJLKbhjteVKlJbelxsYy1rPLVEI6U1AsuMvzrPczLJ0rUDA+754vazk9GlB4d93qna2hjB/fZcSzcQboRKj6DwEKP77y/jTNKGHu8qrAia7+jzfpUEkMbBHJxoqKVG/ieP4OIELkcT5dTOoFtI=,iv:quU2DnKpJ84MlSQlEsmEJV21EY3fzy4Sp0OwAO3D2DY=,tag:lF5YUtZvBF9qon0deTgLmg==,type:str]
+    pgp: []
+    encrypted_regex: ^(data|stringData)$
+    version: 3.7.3
