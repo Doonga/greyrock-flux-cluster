@@ -38,6 +38,7 @@ spec:
         coredns.io/hostname: "ldap.${SECRET_DOMAIN}"
     env:
       LDAP_ORGANISATION: "Grey Rock"
+      LDAP_RFC2307BIS_SCHEMA: "true"
     phpldapadmin:
       enabled: true
       ingress:
