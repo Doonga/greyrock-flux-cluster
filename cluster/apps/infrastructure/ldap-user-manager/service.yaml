@@ -8,8 +8,7 @@ metadata:
     app.kubernetes.io/name: *app
     app.kubernetes.io/instance: *app
 spec:
-  type: ExternalName
-  externalName: ldap-user-manager.${SECRET_PRIVATE_DOMAIN}.
+  type: ClusterIP
   ports:
     - name: http
       port: &port 443
