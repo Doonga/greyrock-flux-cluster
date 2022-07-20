@@ -27,3 +27,5 @@ spec:
       targetPort: imap-secure
   type: LoadBalancer
   externalTrafficPolicy: Local
+  annotations:
+    coredns.io/hostname: "mail.${SECRET_DOMAIN}"
