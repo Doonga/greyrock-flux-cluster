@@ -3,12 +3,14 @@ apiVersion: v1
 kind: Service
 metadata:
   name: &app ldap-user-manager
-  namespace: ldap-user-manager
+  namespace: *app
   labels:
     app.kubernetes.io/name: *app
     app.kubernetes.io/instance: *app
 spec:
   type: ClusterIP
+  selector:
+    app: *app
   ports:
     - name: http
       port: 80
