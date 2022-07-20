@@ -2,7 +2,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: helm-openldap
+  name: openldap
   namespace: openldap
 spec:
   interval: 15m
@@ -36,6 +36,11 @@ spec:
       externalTrafficPolicy: Local
       annotations:
         coredns.io/hostname: "ldap.${SECRET_DOMAIN}"
+    customTLS:
+      enabled: true
+      secret: ldap-cert
+    env:
+      LDAP_ORGANISATION: "Grey Rock"
     phpldapadmin:
       enabled: true
       ingress:
