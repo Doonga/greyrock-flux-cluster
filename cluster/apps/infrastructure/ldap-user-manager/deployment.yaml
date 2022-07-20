@@ -1,0 +1,37 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ldap-user-manager
+  namespace: ldap-user-manager
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: ldap-user-manager
+  template:
+    metadata:
+      labels:
+        app: ldap-user-manager
+    spec:
+      containers:
+        - name: ldap-user-manager
+          image: wheelybird/ldap-user-manager:v1.8
+          resources:
+            limits:
+              memory: 2Gi
+              cpu: 1500m
+            requests:
+              memory: 250Mi
+              cpu: 50m
+          livenessProbe:
+            tcpSocket:
+              port: 80
+            initialDelaySeconds: 15
+            periodSeconds: 20
+          envFrom:
+            - configMapRef:
+                name: ldap-user-manager.env.config
+      restartPolicy: Always

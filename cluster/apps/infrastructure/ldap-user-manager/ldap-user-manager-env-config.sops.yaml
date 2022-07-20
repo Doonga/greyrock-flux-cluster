@@ -1,0 +1,37 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+    name: ldap-user-manager.env.config
+    namespace: ldap-user-manager
+    labels:
+        app: ldap-user-manager
+data:
+    SERVER_HOSTNAME: ldap-user-manager.${SECRET_DOMAIN}
+    LDAP_URI: ldap://ldap.${SECRET_DOMAIN}
+    LDAP_BASE_DN: DC=greyrock,DC=io
+    LDAP_REQUIRE_STARTTLS: "true"
+    LDAP_ADMINS_GROUP: admins
+    LDAP_ADMIN_BIND_DN: cn=admin,dc=greyrock,dc=io
+    LDAP_ADMIN_BIND_PW: ENC[AES256_GCM,data:r6O20wvaSDtr3qXKSiC4WTxWKHKy6FbxhqJgH5fC3UYh,iv:OYZMq9UtOBlQsVLVyMrW6rWbGJ8RkhlfIXqXDP6v1lY=,tag:fimR3JnO7M2zfqqU37i7NA==,type:str]
+    LDAP_IGNORE_CERT_ERRORS: "true"
+    EMAIL_DOMAIN: ${SECRET_DOMAIN}
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age12e0fdd0qrge7ccnhgzdk2yp3w5kxg45cspcy4sms0n3ywd2055wsjy06kj
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBMSDBnK2lpbzBZbE1uZm9E
+            Zm1oTXpkeGMwaHB5VU5XZzRDWGt4ZXZFNVU0CnFuT2ZpWTVNREpHaHp2VDZsdFhX
+            VEU4ZnZlMERkOUlqU3BlL3c3dUlEVHMKLS0tIEFRYldwR3FsWTRFNXpMaXAvbnZB
+            ZktlODd1Y1VmbFZOSGxiS2owbmU5UkkKazP4ZxVMQrE+uV9gsh3ZpBs1hulUOmIp
+            Zcnx/riQuJ7qVRscOSouM/V4OMabUoM6lQAHVhVA6qGsBXyddT8Oig==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2022-07-20T21:31:23Z"
+    mac: ENC[AES256_GCM,data:/DMAKQIf3DVytd4YUCwv+6hE4Lqbos+4fl21Sv7UAk7AlDyIPK0zfxNTXC6olZWLMMyTxdfuY6tXn8dJpfT+5GpqELvIaxxfOb/BKBwwEfZb9ns+NKkNeCIrm8FvhUCSAfO7N5w7PMBPuVoIcsSb9WD2cKaMA/jubNq2tOaF6Wc=,iv:y5EmW1B5zI4A2mYWeTYupkk5oqYMOQBjFd+p10pONQY=,tag:E+DfwTKHxWLJu3q23Pn7RA==,type:str]
+    pgp: []
+    encrypted_regex: PASS|PW
+    version: 3.7.3
