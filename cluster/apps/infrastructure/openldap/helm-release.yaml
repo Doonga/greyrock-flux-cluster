@@ -8,7 +8,7 @@ spec:
   interval: 15m
   chart:
     spec:
-      chart: helm-openldap/openldap-stack-ha
+      chart: openldap-stack-ha
       version: 3.0.1
       sourceRef:
         kind: HelmRepository
