@@ -27,7 +27,7 @@ data:
     RELAY_PASSWORD: ENC[AES256_GCM,data:Mdhkl7D/HkFUzG2DamApwCpHQapie7jFvlko9eqRpmDrbDe4,iv:GSrhJDH1uZbQDlOkdMXvBQYGb7OpWJJI4WrOi3QTQSU=,tag:a9sX/kcIgFoiGWmUF1/gmQ==,type:str]
     ENABLE_LDAP: "1"
     LDAP_START_TLS: "yes"
-    LDAP_SERVER_HOST: ldaps://ldap.private.greyrock.io
+    LDAP_SERVER_HOST: ldaps://ldap.private.greyrock.io:636
     LDAP_SEARCH_BASE: dc=ldap,dc=greyrock,dc=io
     LDAP_BIND_DN: cn=mailserver,ou=users,dc=ldap,dc=greyrock,dc=io
     LDAP_BIND_PW: ENC[AES256_GCM,data:ZoAnt97aDKpebaTF7bKM33casvYGhyGpsp1yysPV26npsramU7i0dj7UarQJ8LLbKO2w99WiEu3Rdmlpo9mixL5zNlq1iH65ASJlc7SFpXTNcvsjtuXGF5fDA7RiFLAt4RVRK3pzRImXysTglnmZfvni2tI65TlyEtj4vejkoeY=,iv:AxlNqjsy3Dpue6FXBap0Mj35sIJDdY0yhspRjKHCysc=,tag:pmDa51MN/2ezbdPkr9AV9A==,type:str]
@@ -40,7 +40,7 @@ data:
     DOVECOT_BASE: dc=ldap,dc=greyrock,dc=io
     DOVECOT_DN: cn=mailserver,ou=users,dc=ldap,dc=greyrock,dc=io
     DOVECOT_DNPASS: ENC[AES256_GCM,data:9RKyG45QfbgY4+Mpq0lN+K1kO5FlPhXFOx5ZUoi8KcCDKSNCHhx8TP0H3o9DYGDiwhLY1koLBfkbELOd16K/elDI3e4bJkGkYstPVi95ykNaYo/mkvX5liXPjwgqlggzrGlXMs/vJu1qb1onvxc6rfqPONTTvApTynWdXo8KEvI=,iv:39YH3IAZiKGIojcyv90crfKKMpeCiST3+ydW4UaxJUE=,tag:9s6I9Y/x7AvB+SDdFaFFtA==,type:str]
-    DOVECOT_URIS: ldaps://ldap.private.greyrock.io
+    DOVECOT_URIS: ldaps://ldap.private.greyrock.io:636
     DOVECOT_AUTH_BIND: "yes"
     DOVECOT_USER_FILTER: (&(objectClass=PostfixBookMailAccount)(uniqueIdentifier=%n))
 sops:
@@ -58,8 +58,8 @@ sops:
             ZktlODd1Y1VmbFZOSGxiS2owbmU5UkkKazP4ZxVMQrE+uV9gsh3ZpBs1hulUOmIp
             Zcnx/riQuJ7qVRscOSouM/V4OMabUoM6lQAHVhVA6qGsBXyddT8Oig==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2022-07-20T18:04:26Z"
-    mac: ENC[AES256_GCM,data:qJ0luLYzl1R/yg29HmggA0Glm+HE7pWQOwEKW52fxxoPYO4uQ4+exq3ONdS4Vwa8Hy6msBLojEHqUL/WeIjh8yY/FYk8mxS1OHbdonBRaXiKEjNSO5qlzGSFWUzP+WlZT4eTpkA8J1a+mInnA6aBIDbBKY4fas3buiykRGw0sHU=,iv:8GaaiTgHILyqDgg70ZfarPkk0IDEnSxZyljjiomG8aE=,tag:6eQ6u17OXlWUjjAhCvfbww==,type:str]
+    lastmodified: "2022-07-20T18:07:59Z"
+    mac: ENC[AES256_GCM,data:TpR57ErZLeX86Ps/8ll4OgH9ygsCFuRUxnalIzs4GN2UbXjAGhZ/BXFySdJH+NmkmILlFZYjF7PVpn7D35sFDl3Mp6kKzfFoE6OPCzn18lIhQNGlOVWVd2kq3KZ+xyCIQMydGdF/YRrXIPJd/yXX2wISbKMMWo+IgI0NeyMmFWk=,iv:26t9fyAU9evSWTQhQ/VfDKobVKXcIs30eic51uoqPgk=,tag:K+1dB6KcRzMnyDMjD0G2/w==,type:str]
     pgp: []
     encrypted_regex: PASS|PW
     version: 3.7.3
