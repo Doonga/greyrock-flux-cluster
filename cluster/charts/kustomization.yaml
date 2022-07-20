@@ -3,7 +3,6 @@ kind: Kustomization
 resources:
   - authentik.yaml
   - bitnami.yaml
-  - docker-mailserver.yaml
   - emberstack.yaml
   - emqx.yaml
   - external-dns.yaml
