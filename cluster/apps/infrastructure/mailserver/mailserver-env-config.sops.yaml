@@ -24,7 +24,25 @@ data:
     RELAY_HOST: smtp.eu.mailgun.org
     RELAY_PORT: "587"
     RELAY_USER: postmaster@greyrock.io
-    RELAY_PASSWORD: ENC[AES256_GCM,data:HxgWNDh8X924NnfgxA==,iv:PD/kXeMN+hi6R6ehC2zX79RCmWMhRuCWd1QCUEByfkM=,tag:YIZnPyhizT6PH+GVuNTkvQ==,type:str]
+    RELAY_PASSWORD: ENC[AES256_GCM,data:ETor5xTx1q3nqdUtZg==,iv:M5Y6jrkXDMpeAcDbKRTgBxAi+OahaiL6ps3U3wt92fI=,tag:KjQEFEOPlpkxmVIovXlRcA==,type:str]
+    ENABLE_LDAP: "1"
+    LDAP_START_TLS: "yes"
+    LDAP_SERVER_HOST: ldap.greyrock.io
+    LDAP_SEARCH_BASE: dc=ldap,dc=greyrock,dc=io
+    LDAP_BIND_DN: cn=mailserver,ou=users,dc=ldap,dc=greyrock,dc=io
+    LDAP_BIND_PW: ENC[AES256_GCM,data:ZoAnt97aDKpebaTF7bKM33casvYGhyGpsp1yysPV26npsramU7i0dj7UarQJ8LLbKO2w99WiEu3Rdmlpo9mixL5zNlq1iH65ASJlc7SFpXTNcvsjtuXGF5fDA7RiFLAt4RVRK3pzRImXysTglnmZfvni2tI65TlyEtj4vejkoeY=,iv:AxlNqjsy3Dpue6FXBap0Mj35sIJDdY0yhspRjKHCysc=,tag:pmDa51MN/2ezbdPkr9AV9A==,type:str]
+    LDAP_QUERY_FILTER_USER: (&(mail=%s)(mailEnabled=TRUE))
+    LDAP_QUERY_FILTER_GROUP: (&(mailGroupMember=%s)(mailEnabled=TRUE))
+    LDAP_QUERY_FILTER_ALIAS: (&(mailAlias=%s)(mailEnabled=TRUE))
+    LDAP_QUERY_FILTER_DOMAIN: (&(|(mail=*@%s)(mailalias=*@%s)(mailGroupMember=*@%s))(mailEnabled=TRUE))
+    LDAP_QUERY_FILTER_SENDERS: (|($LDAP_QUERY_FILTER_USER)($LDAP_QUERY_FILTER_ALIAS)($LDAP_QUERY_FILTER_GROUP))
+    DOVECOT_TLS: "yes"
+    DOVECOT_BASE: dc=ldap,dc=greyrock,dc=io
+    DOVECOT_DN: cn=mailserver,ou=users,dc=ldap,dc=greyrock,dc=io
+    DOVECOT_DNPASS: ENC[AES256_GCM,data:9RKyG45QfbgY4+Mpq0lN+K1kO5FlPhXFOx5ZUoi8KcCDKSNCHhx8TP0H3o9DYGDiwhLY1koLBfkbELOd16K/elDI3e4bJkGkYstPVi95ykNaYo/mkvX5liXPjwgqlggzrGlXMs/vJu1qb1onvxc6rfqPONTTvApTynWdXo8KEvI=,iv:39YH3IAZiKGIojcyv90crfKKMpeCiST3+ydW4UaxJUE=,tag:9s6I9Y/x7AvB+SDdFaFFtA==,type:str]
+    DOVECOT_URIS: ldaps://ldap.greyrock.io
+    DOVECOT_AUTH_BIND: "yes"
+    DOVECOT_USER_FILTER: (&(objectClass=PostfixBookMailAccount)(uniqueIdentifier=%n))
 sops:
     kms: []
     gcp_kms: []
@@ -34,14 +52,14 @@ sops:
         - recipient: age12e0fdd0qrge7ccnhgzdk2yp3w5kxg45cspcy4sms0n3ywd2055wsjy06kj
           enc: |
             -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBYWXVrUFBvK0h2ZWN2ZjNP
-            L2VSOEhqZ3lCczJxSWpoQmcxRUI5U3JVVTBRCnVJRitFSnErSmorc3dXY2hNK1ZP
-            ejNpVzYxY0F0aG1PSHVScERLeGZFUWcKLS0tIENqWnN6TGVVR2ZqZCtJYWhZb2ZV
-            Nlo2blZkd1dEOU12cVA1UnlYemF1TmcKwfrsrdCT2G7biIAPGCz6Np9Fo/dH5pXq
-            jkyDSQJ+TVJiIlLdrDEMYyWPBV1wDOsn2+TgHd/DUcuB5cB6shfhoA==
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBMSDBnK2lpbzBZbE1uZm9E
+            Zm1oTXpkeGMwaHB5VU5XZzRDWGt4ZXZFNVU0CnFuT2ZpWTVNREpHaHp2VDZsdFhX
+            VEU4ZnZlMERkOUlqU3BlL3c3dUlEVHMKLS0tIEFRYldwR3FsWTRFNXpMaXAvbnZB
+            ZktlODd1Y1VmbFZOSGxiS2owbmU5UkkKazP4ZxVMQrE+uV9gsh3ZpBs1hulUOmIp
+            Zcnx/riQuJ7qVRscOSouM/V4OMabUoM6lQAHVhVA6qGsBXyddT8Oig==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2022-07-20T14:06:08Z"
-    mac: ENC[AES256_GCM,data:Ir3LC6kapGaGlcHDilNOzDMOTDk+aeez1JAf6q3hoSchy8WlvruV/RaHsyh3/dDr93AqYW8ausbym3B/s2JUhtHQTIAO4qtcipW3HUBXEK0LF93jJCyk8b3sSBVLfruYacwko9K9aPe5BPS7SnTljkmikPYvGgnTL2gQzuI5j9E=,iv:2Ps9tEUl3+X0MkQ7BkSSa231AG6UQIHvBP+s5dFXiD8=,tag:Z7rljaRhmdfT/UMrwAgP0Q==,type:str]
+    lastmodified: "2022-07-20T16:15:28Z"
+    mac: ENC[AES256_GCM,data:JkwZWP/jnGP7SglSb7VM8m+y4h2xFVTpqNn8cMWXMNlCtuXxH6ZHzvN8znZ1IuH+LfJFzLEMuMVzSTqpGnQYRMPemgWfvXJAspmZfF5bGvQEqpxWqGDDGA/nfaBUoTttR2HO2QqJ+xCEhaEseY6RNFAn8NoFkq7fo10Hb8cP9is=,iv:gKAlyPqXhtVC7iPZzqlIQgkQEgY584ghcZqLsguV/Hg=,tag:ZU7DR+Xg5VJsR6+fgNBlWA==,type:str]
     pgp: []
-    encrypted_regex: PASSWORD
+    encrypted_regex: PASS|PW
     version: 3.7.3
