@@ -6,6 +6,8 @@ metadata:
   namespace: mailserver
   labels:
     app: mailserver
+  annotations:
+    coredns.io/hostname: "mail.${SECRET_DOMAIN}"
 spec:
   selector:
     app: mailserver
@@ -27,5 +29,3 @@ spec:
       targetPort: imap-secure
   type: LoadBalancer
   externalTrafficPolicy: Local
-  annotations:
-    coredns.io/hostname: "mail.${SECRET_DOMAIN}"
