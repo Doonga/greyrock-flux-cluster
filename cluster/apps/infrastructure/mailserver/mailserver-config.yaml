@@ -13,24 +13,24 @@ data:
         postscreen_dnsbl_sites =
         smtpd_recipient_restrictions = permit_sasl_authenticated, permit_mynetworks, reject_unauth_destination, check_policy_service unix:private/policyd-spf, reject_unauth_pipelining, reject_invalid_helo_hostname, reject_non_fqdn_helo_hostname, reject_unknown_recipient_domain
     #postfix-accounts.cf: ENC[AES256_GCM,data:jLemFOb0JeaUwABGDabz01NyKmfOReFDPNesBgYLM7U/xyHHqUtFq0IfdzLEXbKmp/b7gqHUX+PZIcyL2wKrWXEdH4vvweg5/dzRf/Xogy45mmksFLR0xIE5FuInfrGrvilNU1lLixK1QbMhMgxQqBG2hzcan5eX7CGVm2d+0D+UZg==,iv:yNfPEzhhCTt5K5dTS/r1khl/nQMn7FZeIa8KMsvrJ6E=,tag:cmGlbAeE94kIEfkU1BQQYw==,type:str]
-    #postfix-virtual.cf: |
-    #    @sko.ai v@sko.ai
-    #    @skozl.com v@sko.ai
-    # dovecot.cf: |
-    #  service stats {
-    #    unix_listener stats-reader {
-    #      group = docker
-    #      mode = 0666
-    #    }
-    #    unix_listener stats-writer {
-    #      group = docker
-    #      mode = 0666
-    #    }
-    #  }
-    #SigningTable: |
-    #    *@sko.ai mail._domainkey.sko.ai
-    #KeyTable: |
-    #    mail._domainkey.sko.ai sko.ai:mail:/etc/opendkim/keys/sko.ai-mail.key
+    postfix-virtual.cf: |
+        @sko.ai v@sko.ai
+        @skozl.com v@sko.ai
+    dovecot.cf: |
+      service stats {
+        unix_listener stats-reader {
+          group = docker
+          mode = 0666
+        }
+        unix_listener stats-writer {
+          group = docker
+          mode = 0666
+        }
+      }
+    SigningTable: |
+        *@greyrock.io h1._domainkey.greyrock.io
+    KeyTable: |
+        h1._domainkey.greyrock.io greyrock.io:mail:/etc/opendkim/keys/greyrock.io-mail.key
     TrustedHosts: |
         127.0.0.1
         localhost
