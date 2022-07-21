@@ -42,6 +42,8 @@ spec:
     customTLS:
       enabled: true
       secret: "openldap-cert"  # The name of a kubernetes.io/tls type secret to use for TLS
+      CA:
+        enabled: false
     phpldapadmin:
       enabled: true
       ingress:
