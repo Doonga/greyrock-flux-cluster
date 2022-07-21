@@ -1,0 +1,45 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+    name: mailserver.env.config
+    namespace: mailserver
+    labels:
+        app: mailserver
+data:
+    OVERRIDE_HOSTNAME: mail.greyrock.io
+    ENABLE_FETCHMAIL: "0"
+    FETCHMAIL_POLL: "120"
+    ENABLE_CLAMAV: "0"
+    ENABLE_FAIL2BAN: "0"
+    ENABLE_SPAMASSASSIN: "1"
+    SPAMASSASSIN_SPAM_TO_INBOX: "1"
+    POSTFIX_MESSAGE_SIZE_LIMIT: "31457280"
+    ENABLE_POSTGREY: "0"
+    ONE_DIR: "1"
+    DMS_DEBUG: "0"
+    SSL_TYPE: manual
+    SSL_CERT_PATH: /etc/ssl/mailserver/tls.crt
+    SSL_KEY_PATH: /etc/ssl/mailserver/tls.key
+    POSTFIX_INET_PROTOCOLS: ipv4
+    RELAY_HOST: smtp.postmarkapp.com
+    RELAY_PORT: "587"
+    RELAY_USER: PM-T-outbound-nbB1G8QIi6JL2dEqhcoDet
+    RELAY_PASSWORD: ENC[AES256_GCM,data:Mdhkl7D/HkFUzG2DamApwCpHQapie7jFvlko9eqRpmDrbDe4,iv:GSrhJDH1uZbQDlOkdMXvBQYGb7OpWJJI4WrOi3QTQSU=,tag:a9sX/kcIgFoiGWmUF1/gmQ==,type:str]
+    ENABLE_LDAP: "1"
+    LDAP_START_TLS: "no"
+    LDAP_SERVER_HOST: ldap://ldap.greyrock.io
+    LDAP_SEARCH_BASE: dc=greyrock,dc=io
+    LDAP_BIND_DN: cn=admin,dc=greyrock,dc=io
+    LDAP_BIND_PW: ${SECRET_OPENLDAP_ADMIN_PASSWORD}
+    LDAP_QUERY_FILTER_USER: (&(mail=%s)(mailEnabled=TRUE))
+    LDAP_QUERY_FILTER_GROUP: (&(mailGroupMember=%s)(mailEnabled=TRUE))
+    LDAP_QUERY_FILTER_ALIAS: (&(mailAlias=%s)(mailEnabled=TRUE))
+    LDAP_QUERY_FILTER_DOMAIN: (&(|(mail=*@%s)(mailalias=*@%s)(mailGroupMember=*@%s))(mailEnabled=TRUE))
+    LDAP_QUERY_FILTER_SENDERS: (|($LDAP_QUERY_FILTER_USER)($LDAP_QUERY_FILTER_ALIAS)($LDAP_QUERY_FILTER_GROUP))
+    DOVECOT_TLS: "no"
+    DOVECOT_BASE: dc=greyrock,dc=io
+    DOVECOT_DN: cn=admin,dc=greyrock,dc=io
+    DOVECOT_DNPASS: ${SECRET_OPENLDAP_ADMIN_PASSWORD}
+    DOVECOT_URIS: ldap://ldap.greyrock.io
+    DOVECOT_AUTH_BIND: "yes"
+    DOVECOT_USER_FILTER: (&(objectClass=PostfixBookMailAccount)(uniqueIdentifier=%n))

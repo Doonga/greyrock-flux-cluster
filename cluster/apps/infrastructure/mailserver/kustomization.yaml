@@ -7,6 +7,6 @@ resources:
   - dkim-key.sops.yaml
   - ingress.yaml
   - mailserver-config.yaml
-  - mailserver-env-config.sops.yaml
+  - mailserver-env-config.yaml
   - pvc.yaml
   - service.yaml
