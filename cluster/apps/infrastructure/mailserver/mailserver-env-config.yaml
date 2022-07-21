@@ -38,8 +38,11 @@ data:
     LDAP_QUERY_FILTER_SENDERS: (|($LDAP_QUERY_FILTER_USER)($LDAP_QUERY_FILTER_ALIAS)($LDAP_QUERY_FILTER_GROUP))
     DOVECOT_TLS: "no"
     DOVECOT_BASE: dc=greyrock,dc=io
-    DOVECOT_DN: cn=admin,dc=greyrock,dc=io
-    DOVECOT_DNPASS: ${SECRET_OPENLDAP_ADMIN_PASSWORD}
-    DOVECOT_URIS: ldap://ldap.greyrock.io
     DOVECOT_AUTH_BIND: "yes"
     DOVECOT_USER_FILTER: (&(objectClass=PostfixBookMailAccount)(mail=%n))
+    ENABLE_SASLAUTHD: "1"
+    SASLAUTHD_MECHANISMS: "ldap"
+    SASLAUTHD_LDAP_START_TLS: "no"
+    SASLAUTHD_LDAP_TLS_CHECK_PEER: "no"
+    SASLAUTHD_LDAP_SEARCH_BASE: dc=greyrock,dc=io
+    SASLAUTHD_LDAP_FILTER: "(&(uid=%U)(objectClass=person))"
