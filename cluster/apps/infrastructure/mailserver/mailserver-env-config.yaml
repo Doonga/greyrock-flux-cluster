@@ -21,7 +21,7 @@ data:
     SSL_CERT_PATH: /etc/ssl/mailserver/tls.crt
     SSL_KEY_PATH: /etc/ssl/mailserver/tls.key
     POSTFIX_INET_PROTOCOLS: ipv4
-    #DEFAULT_RELAY_HOST: "[smtp.postmarkapp.com]:587"
+    DEFAULT_RELAY_HOST: "[smtp.postmarkapp.com]:587"
     RELAY_HOST: smtp.postmarkapp.com
     RELAY_PORT: "587"
     RELAY_USER: PM-T-outbound-4qn9hp3f6Gjvwh7EGWSdb3
