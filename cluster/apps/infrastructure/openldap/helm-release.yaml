@@ -57,7 +57,20 @@ spec:
       env:
         PHPLDAPADMIN_LDAP_CLIENT_TLS_REQCERT: "never"
     ltb-passwd:
-      enabled: false
+      enabled: "true"
+      ingress:
+        enabled: true
+        ingressClassName: "nginx"
+        path: /
+        pathType: Prefix
+        annotations:
+          cert-manager.io/cluster-issuer: "letsencrypt-production"
+        hosts:
+          - &host "ltb.${SECRET_DOMAIN}"
+        tls:
+          - hosts:
+              - *host
+            secretName: "ltb-tls"
     persistence:
       enabled: true
       storageClass: longhorn
