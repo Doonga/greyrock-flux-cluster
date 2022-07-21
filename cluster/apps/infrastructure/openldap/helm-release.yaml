@@ -56,15 +56,6 @@ spec:
             secretName: "phpldapadmin-tls"
       env:
         PHPLDAPADMIN_LDAP_CLIENT_TLS_REQCERT: "never"
-        PHPLDAPADMIN_LDAP_HOSTS: |
-          - ldap.greyrock.io:
-            - server:
-              - tls: true
-              - base:
-                - cn=config
-                - dc=greyrock,dc=io
-            - login:
-              - bind_id: cn=admin,dc=greyrock,dc=io
     ltb-passwd:
       enabled: "true"
       ingress:
