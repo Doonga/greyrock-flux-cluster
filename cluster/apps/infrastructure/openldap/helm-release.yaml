@@ -39,6 +39,9 @@ spec:
     env:
       LDAP_ORGANISATION: "Grey Rock"
       LDAP_RFC2307BIS_SCHEMA: "true"
+    customTLS:
+      enabled: true
+      secret: "openldap-cert"  # The name of a kubernetes.io/tls type secret to use for TLS
     phpldapadmin:
       enabled: true
       ingress:
