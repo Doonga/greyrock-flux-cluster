@@ -30,7 +30,7 @@ spec:
     domain: ${SECRET_DOMAIN}
     ttl: 60
     fallthrough:
-      enabled: true
+      enabled: false
     service:
       type: LoadBalancer
       port: 53
