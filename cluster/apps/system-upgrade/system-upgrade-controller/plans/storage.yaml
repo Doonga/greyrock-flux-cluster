@@ -17,9 +17,16 @@ spec:
         values:
           - "true"
       - key: StorageOnly
-        operator: NotIn
+        operator: Equals
         values:
           - "true"
+  tolerations:
+    - effect: NoExecute
+      operation: Exists
+      key: CriticalAddonsOnly
+    - effect: NoExecute
+      operation: Exists
+      key: StorageOnly
   prepare:
     image: rancher/k3s-upgrade
     args:
