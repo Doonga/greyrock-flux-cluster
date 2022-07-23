@@ -17,9 +17,12 @@ spec:
         values:
           - "true"
   tolerations:
+    - effect: NoSchedule
+      operation: Exists
+    - key: CriticalAddonsOnly
+      operator: Exists
     - effect: NoExecute
       operation: Exists
-      key: CriticalAddonsOnly
     - effect: NoExecute
       operation: Exists
       key: StorageOnly
