@@ -16,10 +16,6 @@ spec:
         operator: NotIn
         values:
           - "true"
-      - key: StorageOnly
-        operator: NotIn
-        values:
-          - "true"
   tolerations:
     - effect: NoExecute
       operation: Exists
