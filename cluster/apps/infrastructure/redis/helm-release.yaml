@@ -40,7 +40,7 @@ spec:
         type: LoadBalancer
         externalTrafficPolicy: Local
         annotations:
-        coredns.io/hostname: "redis-replica.${SECRET_DOMAIN}"
+          coredns.io/hostname: "redis-replica.${SECRET_DOMAIN}"
     useExternalDNS:
       enabled: true
       suffix: ${SECRET_DOMAIN}
