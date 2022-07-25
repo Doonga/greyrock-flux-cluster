@@ -39,7 +39,7 @@ spec:
         externalTrafficPolicy: Local
     useExternalDNS:
       enabled: true
-      suffix: greyrock.io
+      suffix: ${SECRET_DOMAIN}
       additionalAnnotations:
         ttl: 10
     metrics:
