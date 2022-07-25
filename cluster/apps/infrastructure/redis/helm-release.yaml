@@ -28,7 +28,7 @@ spec:
     global:
       storageClass: longhorn
     auth:
-      password: ${SECRET_REDIS_AUTH_PASSWORD}
+      enabled: false
     master:
       service:
         type: LoadBalancer
