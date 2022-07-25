@@ -48,5 +48,3 @@ spec:
         tag: 1.43.0-debian-11-r10
       serviceMonitor:
         enabled: true
-      prometheusRule:
-        enabled: true
