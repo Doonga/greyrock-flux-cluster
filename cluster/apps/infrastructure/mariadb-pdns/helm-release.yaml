@@ -30,7 +30,7 @@ spec:
     service:
       type: LoadBalancer
       annotations:
-        coredns.io/hostname: "mariadb.${SECRET_DOMAIN}"
+        coredns.io/hostname: "mariadb-pdns.${SECRET_DOMAIN}"
     rootUser:
       password: ${SECRET_MARIADB_ROOT_PASSWORD}
       forcePassword: true
