@@ -1,0 +1,52 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: pdnsadmin
+  namespace: pdnsadmin
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: powerdns-admin
+      version: 1.1.2
+      sourceRef:
+        kind: HelmRepository
+        name: k8s-at-home
+        namespace: flux-system
+      interval: 15m
+  install:
+    createNamespace: true
+    remediation:
+      retries: 5
+  upgrade:
+    remediation:
+      retries: 5
+  values:
+    image:
+      tag: 0.3.0
+    env:
+      SECRET_KEY: ${SECRET_POWERDNS_ADMIN_KEY}
+      TZ: ${TIMEZONE}
+    ingress:
+      main:
+        enabled: true
+        ingressClassName: "nginx"
+        annotations:
+          cert-manager.io/cluster-issuer: "letsencrypt-production"
+          hajimari.io/enable: "true"
+          hajimari.io/icon: "weather-sunset"
+          nginx.ingress.kubernetes.io/whitelist-source-range: "10.0.0.0/8,172.16.0.0/12,192.168.0.0/16"
+        hosts:
+          - host: &host "pdnsadmin.${SECRET_DOMAIN}"
+            paths:
+              - path: /
+                pathType: Prefix
+        tls:
+          - hosts:
+              - *host
+            secretName: "pdnsadmin-tls"
+      persistence:
+        data:
+          enabled: true
+          storageClass: longhorn
