@@ -39,5 +39,8 @@ spec:
       password: ${SECRET_MARIADB_PDNS_USER_PASSWORD}
       name: pdns
       forcePassword: true
+    galera:
+      mariabackup:
+        password: ${SECRET_MARIADB_PDNS_GALERA_BACKUP_PASSWORD}
     metrics:
       enabled: true
