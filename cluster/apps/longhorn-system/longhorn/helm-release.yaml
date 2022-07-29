@@ -32,8 +32,8 @@ spec:
       createDefaultDiskLabeledNodes: true
       storageMinimalAvailablePercentage: "10"
       defaultLonghornStaticStorageClass: "longhorn"
-      backupTarget: s3://longhorn-backup@us-east-1/
-      backupTargetCredentialSecret: minio-secret
+      backupTarget: s3://greyrock-longhorn-backups@us-east-1/
+      backupTargetCredentialSecret: backblaze-secret
       taintToleration: StorageOnly=true:NoExecute;CriticalAddonsOnly=true:NoExecute
     longhornManager:
       tolerations:
