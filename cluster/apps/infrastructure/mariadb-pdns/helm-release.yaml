@@ -27,17 +27,15 @@ spec:
       tag: 10.6.8-debian-11-r0
     global:
       storageClass: longhorn
-    service:
-      type: LoadBalancer
-      annotations:
-        coredns.io/hostname: "mariadb-pdns.${SECRET_DOMAIN}"
-    rootUser:
-      password: ${SECRET_MARIADB_ROOT_PASSWORD}
-      forcePassword: true
-    db:
-      user: pdns
+    primary:
+      service:
+        type: LoadBalancer
+        annotations:
+          coredns.io/hostname: "mariadb-pdns.${SECRET_DOMAIN}"
+    auth:
+      rootPassword: ${SECRET_MARIADB_ROOT_PASSWORD}
+      database: pdns
+      username: pdns
       password: ${SECRET_MARIADB_PDNS_USER_PASSWORD}
-      name: pdns
-      forcePassword: true
     metrics:
       enabled: true
