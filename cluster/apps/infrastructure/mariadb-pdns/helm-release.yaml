@@ -8,8 +8,8 @@ spec:
   interval: 15m
   chart:
     spec:
-      chart: mariadb
-      version: 11.1.1
+      chart: mariadb-galera
+      version: 7.3.6
       sourceRef:
         kind: HelmRepository
         name: bitnami
@@ -39,5 +39,13 @@ spec:
       password: ${SECRET_MARIADB_PDNS_USER_PASSWORD}
       name: pdns
       forcePassword: true
+    galera:
+      mariabackup:
+        password: ${SECRET_MARIADB_PDNS_GALERA_BACKUP_PASSWORD}
+      bootstrap:
+        bootstrapFromNode: true
+        forceSafeToBootstrap: true
     metrics:
       enabled: true
+    primary:
+      podManagementPolicy: Parallel
