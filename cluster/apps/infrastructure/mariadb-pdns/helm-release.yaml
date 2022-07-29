@@ -42,5 +42,7 @@ spec:
     galera:
       mariabackup:
         password: ${SECRET_MARIADB_PDNS_GALERA_BACKUP_PASSWORD}
+      bootstrap:
+        forceSafeToBootstrap: true
     metrics:
       enabled: true
