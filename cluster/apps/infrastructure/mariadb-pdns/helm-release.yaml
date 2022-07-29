@@ -47,3 +47,5 @@ spec:
         forceSafeToBootstrap: true
     metrics:
       enabled: true
+    primary:
+      podManagementPolicy: Parallel
